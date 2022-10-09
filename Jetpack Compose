@@ -1,0 +1,101 @@
+package com.example.sample
+
+import android.content.res.Configuration
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.sample.ui.theme.SampleTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            SampleTheme {
+                // A surface container using the 'background' color from the theme
+              //  Background()
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(text = "Birthday app")
+                        },
+                        navigationIcon = {
+                            IconButton(onClick = { }) {
+                                Icon(Icons.Filled.Menu, contentDescription = "menu")
+                            }
+                        }
+
+                    )
+                },
+                floatingActionButton = {
+                    FloatingActionButton(onClick = { }) {
+                        IconButton(onClick = { }) {
+                            Icon(Icons.Filled.Add, contentDescription = "add")
+                        }
+                    }
+                },
+                floatingActionButtonPosition = FabPosition.End
+            ) {
+
+            }
+              //  Background()
+        }
+        }
+    }
+}
+//@Preview(showBackground = true,name="Light mode")
+@Preview(showBackground = true,name="dark mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun Background(){
+    val backgroundImage = painterResource(R.drawable.androidparty)
+    Box {
+        Image(painter = backgroundImage, contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            contentScale = ContentScale.Crop
+        )
+        BirthdayText()
+    }
+}
+
+
+/*@Preview(showBackground = true,name="dark mode",
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)*/
+@Composable
+fun BirthdayText(){
+    Column(){
+        Text(text = "Happy Birthday Sam!",
+            fontSize =  36.sp, fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 40.dp)
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally))
+
+        Text(text = "~ from Sushant",
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+
+        }
+    }
